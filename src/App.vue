@@ -1,27 +1,25 @@
 <template>
   <div id="app">
+    <SiteHeader/>
+    <SiteMain/>
     
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import SiteHeader from './components/SiteHeader.vue';
+import SiteMain from './components/SiteMain.vue';
+
 
 
 export default {
   name: 'App',
   components: {
-   
+    SiteHeader,
+    SiteMain
+
   },
-  mounted () {
-    axios
-    .get('https://flynn.boolean.careers/exercises/api/array/music')
-    .then(r =>{
-      console.log(r);
-    }).catch(e=>{
-      console.log(e, 'ERROR');
-    })
-  }
+  
 }
 </script>
 
