@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <SiteHeader/>
+    <SiteHeader @selectGenres="selectGenres"/>
     <SiteMain/>
     
   </div>
@@ -13,12 +13,25 @@ import SiteMain from './components/SiteMain.vue';
 
 
 export default {
+  
   name: 'App',
   components: {
     SiteHeader,
     SiteMain
 
   },
+  data(){
+    return{
+      selectedGenre: ""
+    }
+  },
+  methods:{
+    selectGenres(selectedGenre){
+    this.selectedGenre = selectedGenre
+    }
+  }
+
+  
   
 }
 </script>

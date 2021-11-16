@@ -4,12 +4,12 @@
       <img src="../assets/Spotify_logo_without_text.svg" alt=""> 
   </div>
   <div>
-    <select class="form-select" aria-label="Default select example">
-      <option selected>Open this select menu to view discs by your favorite genre</option>
-      <option value="1">Rock</option>
-      <option value="2">Pop</option>
-      <option value="3">Jazz</option>
-      <option value="4">Metal</option>
+    <select class="form-select" aria-label="Default select example" v-model="selectGenre"  @change="$emit('selectGenres', selectGenre)">
+      <option value= "" selected>Open this select menu to view discs by your favorite genre</option>
+      <option value="rock">Rock</option>
+      <option value="pop">Pop</option>
+      <option value="jazz">Jazz</option>
+      <option value="metal">Metal</option>
     </select> 
   </div>
 </div>
@@ -17,6 +17,13 @@
 
 <script>
 export default {
+    data() {
+        return {
+            selectGenre: ""
+        }
+
+    }
+     
 
 }
 </script>

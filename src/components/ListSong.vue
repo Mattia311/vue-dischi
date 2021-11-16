@@ -1,7 +1,7 @@
 <template>
   <div>
-       <div class="d-flex flex-wrap justify-content-center" v-if="!loading">
-          <div class="" v-for="(song,index) in response" :key="index">
+       <div class="d-flex flex-wrap justify-content-center"  >
+          <div class="" v-for="(song,index) in filterAlbums" :key="index">
               <div class="respon text-center ">
                   <img  :src="song.poster" alt="">
                   <h3>{{song.title}}</h3>
@@ -10,39 +10,50 @@
               </div>
           </div>
       </div>
-      <div class="loading" v-else>
-          <p>LOADING...</p>
-      </div>
+      
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 export default {
+    props:["selectedGenre"],
     data () {
         return {
             response: [],
-            loading: true
+            
         }
     },
-    mounted() {
-        setInterval(this.callApi, 3000)
-    },
-
-    methods: {
-        callApi() {
-
-            axios
+    
+    mounted () {
+        axios
             .get('https://flynn.boolean.careers/exercises/api/array/music')
             .then(r =>{
               console.log(r.data.response);
               this.response = r.data.response
-              this.loading = false
             }).catch(e=>{
               console.log(e, 'ERROR');
             })
+          
+
+    },
+    computed:{
+          filterAlbums(){
+            const arrFiltered = this.response.filter(
+              (elm) => {
+                if(elm.genre.toLowerCase() == this.selectedGenre|| this.selectedGenre == ""){
+                  return true
+                }
+                return false
+              }
+            )
+            return arrFiltered;
           }
         }
+     
+    
+    
+    
 
 
 }
@@ -77,14 +88,6 @@ export default {
     img {
         width: 170px;
          
-    }
-    .loading {
-        color: white;
-        display: flex;
-        justify-content: center;
-        padding-top: 400px;
-        font-size: 30px;
-        
     }
 
 </style>

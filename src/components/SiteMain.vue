@@ -1,24 +1,22 @@
 <template>
   <div class="SiteMain">
-      <ListSong/>
-     
+      <ListSong :selectedGenre="selectedGenre"/>
   </div>
 </template>
 
 <script>
 import ListSong from './ListSong.vue'
 export default {
-    data () {
-        return {
-            response: []
-        }
-    },
     components: {
     ListSong
-  }
-
+    },
+    data(){
+    return{
+      selectedGenre: ""
+    }
+    },
     
-
+  
 }
 </script>
 
