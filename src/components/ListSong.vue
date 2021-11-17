@@ -18,10 +18,11 @@
 import axios from 'axios';
 export default {
     props:["selectedGenre"],
+  
     data () {
         return {
             response: [],
-            
+            error: ""
         }
     },
     
@@ -40,8 +41,8 @@ export default {
     computed:{
           filterAlbums(){
             const arrFiltered = this.response.filter(
-              (elm) => {
-                if(elm.genre.toLowerCase() == this.selectedGenre|| this.selectedGenre == ""){
+              (song) => {
+                if(song.genre.toLowerCase() == this.selectedGenre.toLowerCase()|| this.selectedGenre == ""){
                   return true
                 }
                 return false

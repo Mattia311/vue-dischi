@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <SiteHeader @selectGenres="selectGenres"/>
-    <SiteMain/>
+    <SiteMain :selectedGenre="selectedGenre"/>
     
   </div>
 </template>
@@ -25,6 +25,7 @@ export default {
       selectedGenre: ""
     }
   },
+  
   methods:{
     selectGenres(selectedGenre){
     this.selectedGenre = selectedGenre

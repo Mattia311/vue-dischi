@@ -7,14 +7,21 @@
 <script>
 import ListSong from './ListSong.vue'
 export default {
+  props:["selectedGenre"],
+  
     components: {
     ListSong
     },
     data(){
     return{
-      selectedGenre: ""
+      response: [],
+
     }
     },
+
+  
+  
+
     
   
 }
